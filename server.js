@@ -1,17 +1,18 @@
 /*step 1*/
 'use strict';
-
-///lecture time 02:38:48
+/*step 5*/
+require('dotenv').config();
+/*step 3*/
+const express = require('express');
+/*step 6*/
+const cors = require('cors');
 
 /*step 2 console log for proof of life*/
 console.log(' Our first server')
 //REQUIRE
 // In our servers, we have to use require' instead of import. Here we will list the requirements for server
-/*step 3*/
-const express = require('express');
-const res = require('express/lib/response');
-/*step 5*/
-require('dotenv').config();
+/*step 5b*/
+// const res = require('express/lib/response');
 /*step 10*/
 let data = require('./data/weather.json');
 
@@ -19,6 +20,7 @@ let data = require('./data/weather.json');
 // Once we have required something, we have to use it. This is where we assigne the required field a variable.React does this in one step with 'import." express takes 2 steps: 'require" and 'use.'
 /*step 4*/
 const app = express();
+app.use(cors());
 
 //PORT
 /*step 6*/
@@ -32,11 +34,19 @@ params 1. Route '/' 2. call back function () 2.1 call back function takes two pa
 app.get('/', (request, response) => {
   response.send('hello from our server');
 });
-/*step 10 data  */
-app.get('/weather', (request, response) => {
-  let forecast = req.query.data.description;
-  res.send(`${description}`)
+
+
+/*step 11 data  */
+app.get('/weather', (req, res) => {
+  let queryCity = req.query.city_name;
+  console.log(queryCity);
+  let weatherObject = data.find(city => city.city_name.toLowerCase() === queryCity.toLowerCase());
+  let foundCity = new Location(weatherObject);
+  let foundCityFor = new Forecast(weatherObject);
+  res.send(foundCityFor);
 });
+
+//lecture 2:49
 
 /*step 9 star route - error handling page*/
 app.get('*', (request, response) => {
@@ -44,6 +54,20 @@ app.get('*', (request, response) => {
 });
 // ERRORS
 //handle errors
+
+class Location {
+  constructor(weatherObject){
+    this.name = weatherObject.city_name;
+    this.lat = weatherObject.lat;
+    this.lon = weatherObject.lon;
+  }
+}
+class Forecast {
+  constructor(weatherObject){
+    this.forecast = weatherObject.data[0].weather.description;
+    this.date = weatherObject.data[0].datetime;
+  }
+}
 
 // LISTEN
 // start the server 2:15
