@@ -3,11 +3,11 @@
 
 **Author**: Michelle Salazar   
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)   
-**Deployed Site**: https://melodious-pegasus-e702be.netlify.app   
+**Deployed Site**: 
 
 ## Overview
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
-This application is the server to City Explorer a]
+This application is the server to City Explorer
 
 ## Getting Started
 <!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
@@ -30,14 +30,16 @@ Steps to create App
 
 ## Architecture
 <!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
-This app will utilize React, Bootstrap, JSON Javascript and CSS for its deployment and use.
+This app will utilize React, JSON, Javascript, axios, node,
 
 ## Change Log
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 03-21-22 2:30pm - Collab with Michael Maker WRRC diagram
-03-21-22 11:00pm - Netlify deployment
+03-22-22 2:30pm - Collab with Thomas B WRRC diagram
+03-23-22 2:30pm - Collab with Ella Svete, Anthony Hill WRRC diagram
+
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
