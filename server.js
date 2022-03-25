@@ -37,13 +37,18 @@ app.get('/', (request, response) => {
 
 
 /*step 11 data  */
+
 app.get('/weather', (req, res) => {
+  try{
   let queryCity = req.query.city_name;
   console.log(queryCity);
   let weatherObject = data.find(city => city.city_name.toLowerCase() === queryCity.toLowerCase());
   let foundCity = new Location(weatherObject);
-  let foundCityFor = new Forecast(weatherObject);
-  res.send(foundCityFor);
+  // let foundCityFor = new Forecast(weatherObject);
+  res.send(foundCity);
+  }catch(error){
+    next(error);
+  }
 });
 
 //lecture 2:49
@@ -54,20 +59,25 @@ app.get('*', (request, response) => {
 });
 // ERRORS
 //handle errors
+app.use((error,request,response,next)=>{
+  response.status(500).send(error.message);
+})
 
+//CLASSES
 class Location {
   constructor(weatherObject){
     this.name = weatherObject.city_name;
     this.lat = weatherObject.lat;
     this.lon = weatherObject.lon;
-  }
-}
-class Forecast {
-  constructor(weatherObject){
     this.forecast = weatherObject.data[0].weather.description;
-    this.date = weatherObject.data[0].datetime;
   }
 }
+// class Forecast {
+//   constructor(weatherObject){
+//     this.forecast = weatherObject.data[0].weather.description;
+//     this.date = weatherObject.data[0].datetime;
+//   }
+// }
 
 // LISTEN
 // start the server 2:15
