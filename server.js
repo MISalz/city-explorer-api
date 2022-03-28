@@ -51,7 +51,6 @@ app.get('/weather', (req, res) => {
   }
 });
 
-//lecture 2:49
 
 /*step 9 star route - error handling page*/
 app.get('*', (request, response) => {

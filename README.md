@@ -91,7 +91,7 @@ Actual time needed to complete: _____
 
 ## Tasks
 <ol>
-<li> WWRC -Thomas Basham
+<li> WRRC -Thomas Basham
 <img src="img/2022-03-22 lab07WWRC_city explore.bmp">
 </li>
 <li>
@@ -114,7 +114,7 @@ Actual time needed to complete: _____
 
 ## Tasks
 <ol>
-<li> WWRC -Ella Svete, Anthony Hill
+<li> WRRC -Ella Svete, Anthony Hill
 <img src="img/WRRC Lab08.jpeg">
 </li>
 <li>
@@ -138,7 +138,7 @@ Actual time needed to complete: _____
 
 ## Tasks
 <ol>
-<li> WWRC - Tanesha Brester
+<li> WRRC - Tanesha Brester
 <img src="img/WRRC Lab09.jpg">
 </li>
 <li>
@@ -162,8 +162,8 @@ Actual time needed to complete: _____
 
 ## Tasks
 <ol>
-<li> WWRC -Ella Svete, Anthony Hill
-
+<li> WRRC -
+<img src="img/WRRC Lab10.jpg">
 </li>
 <li>
 </li>
