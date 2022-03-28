@@ -74,6 +74,10 @@ https://github.com/MISalz
 https://dashboard.heroku.com/apps/city-explorerbeapi/deploy/github
 </li>
 <li> 
+WeatherAPI https://www.weatherbit.io/account/create  
+</li>
+<li>  
+MovieAPI https://www.themoviedb.org/settings/api
 </li>
 </ol>
 
