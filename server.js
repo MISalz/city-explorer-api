@@ -6,6 +6,7 @@ require('dotenv').config();
 const express = require('express');
 /*step 6*/
 const cors = require('cors');
+const axios = require('axios');
 
 /*step 2 console log for proof of life*/
 console.log(' Our first server')
@@ -14,7 +15,7 @@ console.log(' Our first server')
 /*step 5b*/
 // const res = require('express/lib/response');
 /*step 10*/
-let data = require('./data/weather.json');
+// let data = require('./data/weather.json');
 
 //USE
 // Once we have required something, we have to use it. This is where we assigne the required field a variable.React does this in one step with 'import." express takes 2 steps: 'require" and 'use.'
@@ -38,15 +39,20 @@ app.get('/', (request, response) => {
 
 /*step 11 data  */
 
-app.get('/weather', (req, res) => {
-  try{
-  let queryCity = req.query.city_name;
-  console.log(queryCity);
-  let weatherObject = data.find(city => city.city_name.toLowerCase() === queryCity.toLowerCase());
-  let foundCity = new Location(weatherObject);
-  // let foundCityFor = new Forecast(weatherObject);
-  res.send(foundCity);
-  }catch(error){
+app.get('/weather', async (req, res) => {
+  try {
+    let searchData = req.query.searchData;
+    let url = `https://www.thunderclient.com/welcome?lat:${this.state.searchData.lat}&lon:${this.state.searchData.lon}&key=${process.env.WEATHER_API_KEY}`;
+    let weatherResp = await axios.get(url);
+    let forecastArray = weatherResp.data.weather.description.map(forecast => new WeatherForecast(forecast));
+    console.log(forecastArray);
+    console.log(searchData);
+    // console.log(searchQuery);
+    // let weatherObject = data.find(city => city.city_name.toLowerCase() === searchQuery.toLowerCase());
+    // let foundCity = new Location(weatherObject);
+    // // let foundCityFor = new Forecast(weatherObject);
+    res.send(weatherResp);
+  } catch (error) {
     next(error);
   }
 });
@@ -58,25 +64,18 @@ app.get('*', (request, response) => {
 });
 // ERRORS
 //handle errors
-app.use((error,request,response,next)=>{
+app.use((error, request, response, next) => {
   response.status(500).send(error.message);
 })
 
 //CLASSES
-class Location {
-  constructor(weatherObject){
-    this.name = weatherObject.city_name;
-    this.lat = weatherObject.lat;
-    this.lon = weatherObject.lon;
-    this.forecast = weatherObject.data[0].weather.description;
+class WeatherForecast {
+  constructor(forecast) {
+    this.lat = forecast.lat;
+    this.lon = forecast.lon;
+    this.forecast = forecast.weather.description;
   }
 }
-// class Forecast {
-//   constructor(weatherObject){
-//     this.forecast = weatherObject.data[0].weather.description;
-//     this.date = weatherObject.data[0].datetime;
-//   }
-// }
 
 // LISTEN
 // start the server 2:15
