@@ -38,19 +38,14 @@ app.get('/', (request, response) => {
 
 
 /*step 11 data  */
-
 app.get('/weather', async (req, res) => {
   try {
     let searchData = req.query.searchData;
-    let url = `https://www.thunderclient.com/welcome?lat:${this.state.searchData.lat}&lon:${this.state.searchData.lon}&key=${process.env.WEATHER_API_KEY}`;
+    let url = `https://api.weatherbit.io/v2.0/current?lat=${this.state.searchData.lat}&lon=${this.state.searchData.lon}&key=${process.env.WEATHER_API_KEY}`;
     let weatherResp = await axios.get(url);
     let forecastArray = weatherResp.data.weather.description.map(forecast => new WeatherForecast(forecast));
     console.log(forecastArray);
     console.log(searchData);
-    // console.log(searchQuery);
-    // let weatherObject = data.find(city => city.city_name.toLowerCase() === searchQuery.toLowerCase());
-    // let foundCity = new Location(weatherObject);
-    // // let foundCityFor = new Forecast(weatherObject);
     res.send(weatherResp);
   } catch (error) {
     next(error);
